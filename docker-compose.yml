@@ -1,0 +1,23 @@
+version: '2'
+services:
+  redis:
+    image: redis
+    network_mode: "bridge"
+  web:
+    build: .
+    # command: "true"
+    image: cnsa/in_fact_test
+    links:
+      - redis
+    env_file:
+      - ./freeling.env
+      - ./rffi.env
+      - ./redis.env
+      - ./base.env
+    environment:
+      VIRTUAL_HOST: apis.rffi.cnsa.ru
+      PORT: 4000
+    depends_on:
+      - redis
+    restart: always
+    network_mode: "bridge"

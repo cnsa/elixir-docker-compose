@@ -1,0 +1,15 @@
+_build
+deps
+.gtm
+.idea
+.git
+doc
+log
+node_modules
+rel
+*.iml
+*.env
+docker-compose.yml
+docker-compose.prod.yml
+.DS_Store
+.gitignore
