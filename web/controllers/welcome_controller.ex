@@ -4,15 +4,17 @@ defmodule SomeApp.WelcomeController do
   import SomeApp.{MainHelper, OtherHelper}
 
   def index(conn, _params) do
-    Phoenix.PubSub.subscribe :some_app_redis, "user:123"
-    Phoenix.PubSub.broadcast :some_app_redis, "user:123", {:user_update, %{id: 123, name: "Shane"}}
+    SomeApp.Fastlane.Server.subscribe "user:123", SomeApp.Actor, [555]
+    SomeApp.Fastlane.Server.publish   "user:123", %{id: 123, name: "Shane"}
 
     messages =
         Process.info(self)[:messages]
-        |> Enum.filter(fn({id, _}) -> id == :user_update end)
+        |> Enum.filter(fn
+          {id, _} -> id == :user_update
+          {id, _, :subscribed, _} -> id == :redix_pubsub
+          {id, _, :message, _} -> id == :redix_pubsub
+        end)
     count = Enum.count(messages)
-
-    if count > 30, do: Phoenix.PubSub.unsubscribe :some_app_redis, "user:123"
 
     Logger.info "Messages size: #{count}"
     render conn, "index.html"

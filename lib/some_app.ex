@@ -5,20 +5,18 @@ defmodule SomeApp do
   def start(_type, _args) do
     import Supervisor.Spec
 
-    redis_config =
-      Application.get_env(:some_app, :redis)
-      |> Keyword.update!(:port, &(String.to_integer(&1)))
+    redis = redis_options
 
     # Define workers and child supervisors to be supervised
     children = [
       # Start the endpoint when the application starts
       supervisor(SomeApp.Endpoint, []),
-      supervisor(Phoenix.PubSub.Redis, [:some_app_redis, [host: redis_config[:host],
-                                                          port: redis_config[:port],
-                                                          pool_size: 1,
-                                                          namespace: redis_config[:namespace]]]),
+
+      supervisor(SomeApp.Fastlane.Supervisor, [:some_app_redis, [host: redis[:host],
+                                                                 port: redis[:port],
+                                                                 pool_size: 5,
+                                                                 namespace: redis[:namespace]]]),
       # Start your own worker by calling: SomeApp.Worker.start_link(arg1, arg2, arg3)
-      # worker(SomeApp.Worker, [arg1, arg2, arg3]),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
@@ -32,5 +30,10 @@ defmodule SomeApp do
   def config_change(changed, _new, removed) do
     SomeApp.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  def redis_options do
+    Application.get_env(:some_app, :redis)
+    |> Keyword.update!(:port, &(String.to_integer(&1)))
   end
 end
