@@ -18,7 +18,7 @@ defmodule SomeApp.Mixfile do
   def application do
     [mod: {SomeApp, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html,
-                    :poolboy, :cowboy, :redix_pubsub,
+                    :poolboy, :cowboy, :redix_pubsub_fastlane,
                     :logger, :gettext]]
   end
 
@@ -31,7 +31,7 @@ defmodule SomeApp.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.2.0"},
-     {:redix_pubsub, "~> 0.1"},
+     {:redix_pubsub_fastlane, "~> 0.1"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_html, "~> 2.6"},
      {:gettext, "~> 0.11"},

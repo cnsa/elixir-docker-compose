@@ -1,6 +1,6 @@
 %{"bbmustache": {:hex, :bbmustache, "1.0.4", "7ba94f971c5afd7b6617918a4bb74705e36cab36eb84b19b6a1b7ee06427aa38", [:rebar], []},
   "cf": {:hex, :cf, "0.2.1", "69d0b1349fd4d7d4dc55b7f407d29d7a840bf9a1ef5af529f1ebe0ce153fc2ab", [:rebar3], []},
-  "connection": {:hex, :connection, "1.0.3", "3145f7416be3df248a4935f24e3221dc467c1e3a158d62015b35bd54da365786", [:mix], []},
+  "connection": {:hex, :connection, "1.0.4", "a1cae72211f0eef17705aaededacac3eb30e6625b04a6117c1b2db6ace7d5976", [:mix], []},
   "cowboy": {:hex, :cowboy, "1.0.4", "a324a8df9f2316c833a470d918aaf73ae894278b8aa6226ce7a9bf699388f878", [:rebar, :make], [{:cowlib, "~> 1.0.0", [hex: :cowlib, optional: false]}, {:ranch, "~> 1.0", [hex: :ranch, optional: false]}]},
   "cowlib": {:hex, :cowlib, "1.0.2", "9d769a1d062c9c3ac753096f868ca121e2730b9a377de23dec0f7e08b1df84ee", [:make], []},
   "env": {:hex, :env, "0.2.0", "d2faa336b1ce5a29815329de420962a69954e7cca43c925098071530631333db", [:mix], []},
@@ -19,4 +19,5 @@
   "ranch": {:hex, :ranch, "1.2.1", "a6fb992c10f2187b46ffd17ce398ddf8a54f691b81768f9ef5f461ea7e28c762", [:make], []},
   "redix": {:hex, :redix, "0.4.0", "c8cfad755252e5441c4119437ba3a8989518af7aa90dbd6f4ff7207b72e4a967", [:mix], [{:connection, "~> 1.0.0", [hex: :connection, optional: false]}]},
   "redix_pubsub": {:hex, :redix_pubsub, "0.1.0", "b408913bf2287ed8749b6f2abe8d7cecdcd6cb4dbd9635ecc444c183100bed00", [:mix], [{:connection, "~> 1.0", [hex: :connection, optional: false]}, {:redix, "~> 0.4.0", [hex: :redix, optional: false]}]},
+  "redix_pubsub_fastlane": {:hex, :redix_pubsub_fastlane, "0.1.2", "5709a6d6c600aa288ce3c49b3aa7bc2a6c4c343c9679533fd1df6b116f44dfa3", [:mix], [{:poolboy, "~> 1.5.1 or ~> 1.6", [hex: :poolboy, optional: false]}, {:redix, "~> 0.4.0", [hex: :redix, optional: false]}, {:redix_pubsub, "~> 0.1", [hex: :redix_pubsub, optional: false]}]},
   "relx": {:hex, :relx, "3.20.0", "b515b8317d25b3a1508699294c3d1fa6dc0527851dffc87446661bce21a36710", [:rebar3], [{:bbmustache, "1.0.4", [hex: :bbmustache, optional: false]}, {:cf, "0.2.1", [hex: :cf, optional: false]}, {:erlware_commons, "0.21.0", [hex: :erlware_commons, optional: false]}, {:getopt, "0.8.2", [hex: :getopt, optional: false]}, {:providers, "1.6.0", [hex: :providers, optional: false]}]}}

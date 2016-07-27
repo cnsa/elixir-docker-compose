@@ -12,10 +12,10 @@ defmodule SomeApp do
       # Start the endpoint when the application starts
       supervisor(SomeApp.Endpoint, []),
 
-      supervisor(SomeApp.Fastlane.Supervisor, [:some_app_redis, [host: redis[:host],
-                                                                 port: redis[:port],
-                                                                 pool_size: 5,
-                                                                 namespace: redis[:namespace]]]),
+      supervisor(Redix.PubSub.Fastlane, [:some_app_redis, [host: redis[:host],
+                                                           port: redis[:port],
+                                                           fastlane: SomeApp.Actor,
+                                                           pool_size: 5]]),
       # Start your own worker by calling: SomeApp.Worker.start_link(arg1, arg2, arg3)
     ]
 

@@ -4,19 +4,21 @@ defmodule SomeApp.WelcomeController do
   import SomeApp.{MainHelper, OtherHelper}
 
   def index(conn, _params) do
-    SomeApp.Fastlane.Server.subscribe "user:123", SomeApp.Actor, [555]
-    SomeApp.Fastlane.Server.publish   "user:123", %{id: 123, name: "Shane"}
+    :ok = Redix.PubSub.Fastlane.psubscribe :some_app_redis, "user*",   {SomeApp.Actor, [555]}
+    :ok = Redix.PubSub.Fastlane.subscribe  :some_app_redis, "tuser:7", {SomeApp.Actor, [555]}
+    :ok = Redix.PubSub.Fastlane.psubscribe :some_app_redis, "muser*",  {nil, [556]}
+    :ok = Redix.PubSub.Fastlane.psubscribe :some_app_redis, "nuser*",  {SomeApp.Actor, [556]}
 
-    messages =
-        Process.info(self)[:messages]
-        |> Enum.filter(fn
-          {id, _} -> id == :user_update
-          {id, _, :subscribed, _} -> id == :redix_pubsub
-          {id, _, :message, _} -> id == :redix_pubsub
-        end)
-    count = Enum.count(messages)
+    :ok = Redix.PubSub.Fastlane.publish    :some_app_redis, "user:123",  {&Poison.encode!/1, %{id: 123, name: "Shane"}}
+    :ok = Redix.PubSub.Fastlane.publish    :some_app_redis, "tuser:7",   {&Poison.encode!/1, %{id: 7, name: "Tuser"}}
+    :ok = Redix.PubSub.Fastlane.publish    :some_app_redis, "muser:453", "Lane"
+    :ok = Redix.PubSub.Fastlane.publish    :some_app_redis, "nuser:554", "SuperNuser"
 
-    Logger.info "Messages size: #{count}"
+    {:ok, _user_data}  = Redix.PubSub.Fastlane.Server.find(:some_app_redis, "user*")
+    {:ok, _tuser_data} = Redix.PubSub.Fastlane.Server.find(:some_app_redis, "tuser:7")
+    {:ok, _muser_data} = Redix.PubSub.Fastlane.Server.find(:some_app_redis, "muser*")
+    {:ok, _nuser_data} = Redix.PubSub.Fastlane.Server.find(:some_app_redis, "nuser*")
+
     render conn, "index.html"
   end
 end
