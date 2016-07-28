@@ -2,14 +2,14 @@ FROM cnsa/elixir
 
 # COMPILE DEPS
 
-# RUN apt-get update -qq
-# RUN apt-get install -qqy imagemagick libtool
-#
-# WORKDIR /tmp
-#
-# RUN wget -q https://gist.githubusercontent.com/merqlove/eda0bd9511fce0d319e6efb152f8c68d/raw/aab4e897a6233b38c4252a9ca8db2641aad50874/iconv_install_ubuntu14.sh && \
-#   chmod +x iconv_install_ubuntu14.sh && \
-#   ./iconv_install_ubuntu14.sh
+RUN apt-get update -qq > /dev/null 2>&1
+RUN apt-get install -qqy imagemagick libtool build-essential > /dev/null 2>&1
+
+WORKDIR /tmp
+
+RUN wget -q https://gist.githubusercontent.com/merqlove/eda0bd9511fce0d319e6efb152f8c68d/raw/aab4e897a6233b38c4252a9ca8db2641aad50874/iconv_install_ubuntu14.sh && \
+  chmod +x iconv_install_ubuntu14.sh && \
+  ./iconv_install_ubuntu14.sh > /dev/null 2>&1
 
 # COPY APP
 
@@ -26,7 +26,7 @@ RUN chmod +x /docker-entrypoint.sh
 
 WORKDIR /app
 
-RUN MIX_ENV=prod MIX_QUIET=1 mix do deps.get, compile, release
+RUN MIX_ENV=prod MIX_QUIET=1 mix do deps.get, compile, release > /dev/null 2>&1
 
 # RUN
 

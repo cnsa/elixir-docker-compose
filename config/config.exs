@@ -16,7 +16,7 @@ config :some_app, SomeApp.Endpoint,
 config :some_app, :redis,
   namespace: "some_app",
   host: "localhost",
-  port: "6379"
+  port: 6379
 
 # Configures Elixir's Logger
 config :logger, :console,

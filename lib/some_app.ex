@@ -14,8 +14,13 @@ defmodule SomeApp do
 
       supervisor(Redix.PubSub.Fastlane, [:some_app_redis, [host: redis[:host],
                                                            port: redis[:port],
-                                                           fastlane: SomeApp.Actor,
-                                                           pool_size: 5]]),
+                                                           decoder: &SomeApp.Schema.decode/1]],
+                                         id: :some_app),
+
+      supervisor(Redix.PubSub.Fastlane, [:other_app_redis, [host: redis[:host],
+                                                           port: redis[:port]]],
+                                         id: :other_app),
+      worker(SomeApp.Actor, [:some_actor, []]),
       # Start your own worker by calling: SomeApp.Worker.start_link(arg1, arg2, arg3)
     ]
 
@@ -34,6 +39,9 @@ defmodule SomeApp do
 
   def redis_options do
     Application.get_env(:some_app, :redis)
-    |> Keyword.update!(:port, &(String.to_integer(&1)))
+    |> Keyword.update!(:port, &(to_integer(&1)))
   end
+
+  defp to_integer(value) when is_bitstring(value), do: String.to_integer(value)
+  defp to_integer(value), do: value
 end

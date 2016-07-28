@@ -19,7 +19,7 @@ defmodule SomeApp.Mixfile do
     [mod: {SomeApp, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html,
                     :poolboy, :cowboy, :redix_pubsub_fastlane,
-                    :logger, :gettext]]
+                    :logger, :gettext, :p1_utils, :iconv]]
   end
 
   # Specifies which paths to compile per environment.
@@ -31,10 +31,13 @@ defmodule SomeApp.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [{:phoenix, "~> 1.2.0"},
-     {:redix_pubsub_fastlane, "~> 0.1"},
+     {:redix_pubsub_fastlane, "~> 0.1", github: "merqlove/redix_pubsub_fastlane"},
      {:phoenix_pubsub, "~> 1.0"},
      {:phoenix_html, "~> 2.6"},
      {:gettext, "~> 0.11"},
+     {:poison, "~> 2.0"},
+     {:iconv, "~> 1.0", github: "processone/iconv", ref: "1.0.1", compile: "./configure; ~/.mix/rebar get-deps compile"},
+     {:p1_utils, "~> 1.0"},
      {:poolboy, "~> 1.5.1"},
      {:cowboy, "~> 1.0"},
      {:exrm, "~> 1.0"}]
