@@ -2,10 +2,10 @@ version: '2'
 services:
   redis:
     image: redis
-    network_mode: "bridge"
+    networks:
+      - back-tier
   web:
     build: .
-    # command: "true"
     image: cnsa/in_fact_test
     links:
       - redis
@@ -17,7 +17,17 @@ services:
     environment:
       VIRTUAL_HOST: apis.rffi.cnsa.ru
       PORT: 4000
+    ports:
+      - 8080
     depends_on:
       - redis
     restart: always
-    network_mode: "bridge"
+    networks:
+      - front-tier
+      - back-tier
+
+networks:
+  front-tier:
+    driver: bridge
+  back-tier:
+    driver: bridge
