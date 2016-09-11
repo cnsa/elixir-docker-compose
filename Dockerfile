@@ -1,4 +1,4 @@
-FROM cnsa/elixir-iconv:1.3.2
+FROM cnsa/ubuntu-iconv:0.9.18
 
 ARG VERSION
 

@@ -19,9 +19,8 @@ environment :dev do
 end
 
 environment :prod do
-  set include_erts: false
+  set include_erts: true
   set include_src: false
-  set include_system_libs: false
 end
 
 # You may define one or more releases in this file.
