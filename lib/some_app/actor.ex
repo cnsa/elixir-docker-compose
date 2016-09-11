@@ -26,10 +26,10 @@ defmodule SomeApp.Actor do
   def fastlane(from, message, options) do
     Logger.info "Actor fastlane"
 
-    IO.inspect from
-    IO.inspect message.channel
-    IO.inspect message.payload
-    IO.inspect options
+    Logger.info "#{inspect from}"
+    Logger.info "#{inspect message.channel}"
+    Logger.info "#{inspect message.payload}"
+    Logger.info "#{inspect options}"
     :ok
   end
 

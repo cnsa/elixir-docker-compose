@@ -6,10 +6,13 @@ deps
 doc
 log
 node_modules
-rel
+private/static/*
+!priv/static/manifest.json
 *.iml
 *.env
 docker-compose.yml
-docker-compose.prod.yml
 .DS_Store
 .gitignore
+Dockerfile
+*.ez
+erl_crash.dump

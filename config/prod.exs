@@ -16,6 +16,8 @@ config :some_app, SomeApp.Endpoint,
   url: [host: "${VIRTUAL_HOST}", port: 80],
   secret_key_base: "${SECRET_KEY_BASE}",
   server: true
+  # root: ".",
+  # version: Mix.Project.config[:version]
 
 config :some_app, :redis,
   namespace: "${REDIS_NAMESPACE}",

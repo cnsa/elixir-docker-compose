@@ -1,11 +1,14 @@
 # App artifacts
 /_build
 /db
+.envrc
 /deps
+/cover
 /*.ez
-*.env
-!base.env
-/rel
+secrets.env
+*_secrets.env
+/rel/*
+!/rel/config.exs
 /priv/static
 .idea
 *.iml

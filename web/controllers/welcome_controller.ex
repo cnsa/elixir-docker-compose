@@ -16,6 +16,9 @@ defmodule SomeApp.WelcomeController do
     :ok = Redix.PubSub.Fastlane.publish    :other_app_redis, "muser:453", "Lane"
     :ok = Redix.PubSub.Fastlane.publish    :other_app_redis, "nuser:554", "SuperNuser"
 
+    Logger.debug "#{inspect get_item}"
+    Logger.debug "#{inspect list_item}"
+
     # _user_list  = Redix.PubSub.Fastlane.Server.list(:some_app_redis, "user*")
     # _tuser_list = Redix.PubSub.Fastlane.Server.list(:some_app_redis, "tuser:7")
     # _muser_list = Redix.PubSub.Fastlane.Server.list(:other_app_redis, "muser*")

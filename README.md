@@ -7,7 +7,31 @@ To start your Phoenix app:
   * Install dependencies with `mix deps.get`
   * Start Phoenix endpoint with `mix phoenix.server`
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## CrossOS Compilation
+
+For this case we are compiling our images locally inside Docker.  
+Next we just send resulting tarball into the Production server.  
+In current demo application running locally.
+<!-- To enable OS cross compilation you must have same `ERTS` version on both ends(`Docker`, `OSX`/`Linux`).  
+Because we releasing the build excluding `ERTS` & system binaries.  
+Currently it is `ERTS 8.0.2` inside Docker, which means you must have `Erlang` 19.0.2-19.0.3 on dev machine.  
+*This method adding us ability not recompile all project inside docker, but just to recompile few `NIF`'s.*   -->
+
+## Run in Docker:
+
+    $ docker-machine start default
+    $ eval $(docker-machine env default)
+    $ make deploy
+    $ ARGS="web=5" make scale
+
+## Add demo host into `/etc/hosts`, replace IP with your DOCKER IP:
+    $ sudo sh -c "echo '192.168.99.100 some_app.lvh.me' >> /etc/hosts"
+
+Now you can visit [`some_app.lvh.me`](http://some_app.lvh.me) from your browser.
+
+## Cleanup:
+
+    $ make down
 
 Ready to run in production? Please [check our deployment guides](http://www.phoenixframework.org/docs/deployment).
 

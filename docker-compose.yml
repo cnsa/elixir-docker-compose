@@ -1,21 +1,35 @@
 version: '2'
 services:
+  lb:
+    image: dockercloud/haproxy:1.5.3
+    ports:
+      - 80:80
+    environment:
+      BALANCE: roundrobin
+    links:
+      - web
+    networks:
+      - front-tier
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
   redis:
-    image: redis
+    image: redis:3.2
     networks:
       - back-tier
   web:
-    build: .
-    image: cnsa/in_fact_test
+    build:
+      context: .
+      args:
+        VERSION: "${VERSION}"
+    image: "cnsa/some_app:${VERSION}"
     links:
       - redis
     env_file:
-      - ./freeling.env
-      - ./rffi.env
+      - ./secrets.env
       - ./redis.env
       - ./base.env
     environment:
-      VIRTUAL_HOST: apis.rffi.cnsa.ru
+      VIRTUAL_HOST: some_app.lvh.me
       PORT: 4000
     ports:
       - 8080
