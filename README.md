@@ -17,7 +17,7 @@ Because we releasing the build excluding `ERTS` & system binaries.
 Currently it is `ERTS 8.0.2` inside Docker, which means you must have `Erlang` 19.0.2-19.0.3 on dev machine.  
 *This method adding us ability not recompile all project inside docker, but just to recompile few `NIF`'s.*   -->
 
-## Run in Docker:
+## Build, Release & Run with Docker:
 
     $ docker-machine start default
     $ eval $(docker-machine env default)
