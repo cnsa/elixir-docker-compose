@@ -24,8 +24,8 @@ Currently it is `ERTS 8.0.2` inside Docker, which means you must have `Erlang` 1
     $ make deploy
     $ ARGS="web=5" make scale
 
-## Add demo host into `/etc/hosts`, replace IP with your DOCKER IP:
-    $ sudo sh -c "echo '192.168.99.100 some_app.lvh.me' >> /etc/hosts"
+## Add demo host into `/etc/hosts`:
+    $ sudo sh -c "echo '$([[ $DOCKER_HOST =~ ^[a-z:\/]*([0-9\.]*):* ]] && echo ${BASH_REMATCH[1]}) some_app.lvh.me' >> /etc/hosts"
 
 Now you can visit [`some_app.lvh.me`](http://some_app.lvh.me) from your browser.
 
