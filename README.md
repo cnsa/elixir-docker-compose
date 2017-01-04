@@ -1,7 +1,5 @@
 # SomeApp
 
-To find a `Intellij.Elixir` bug, open [web/controllers/welcome_controller.ex](web/controllers/welcome_controller.ex).
-
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
