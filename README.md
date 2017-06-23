@@ -1,4 +1,5 @@
 # SomeApp
+### RedixPubSubFastlane Demo App
 
 To start your Phoenix app:
 
