@@ -39,12 +39,11 @@ defmodule SomeApp.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:gettext, "~> 0.11"},
      {:poison, "~> 2.0"},
-     {:iconv, "~> 1.0", github: "processone/iconv", tag: "1.0.2", compile: "./configure; ~/.mix/rebar get-deps compile"},
+     {:iconv, "~> 1.0", github: "processone/iconv", tag: "1.0.5", compile: "./configure; ~/.mix/rebar get-deps compile"},
      {:p1_utils, "~> 1.0"},
      {:poolboy, "~> 1.5.1"},
      {:cowboy, "~> 1.0"},
      {:excoveralls, "~> 0.5", only: :test},
      {:distillery, "~> 0.9.9"}]
-    #  {:distillery, "~> 0.8.0", github: "hammerandchisel/distillery", ref: "8566dd0bad3d6e4f997e81770588af7a4252807e"}]
   end
 end
