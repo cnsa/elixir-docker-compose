@@ -8,13 +8,10 @@ To start your Phoenix app:
 
 ## CrossOS Compilation
 
-For this case we are compiling our images locally inside Docker.  
-Next we just send resulting tarball into the Production server.  
-In current demo application running locally.
-<!-- To enable OS cross compilation you must have same `ERTS` version on both ends(`Docker`, `OSX`/`Linux`).  
-Because we releasing the build excluding `ERTS` & system binaries.  
-Currently it is `ERTS 8.0.2` inside Docker, which means you must have `Erlang` 19.0.2-19.0.3 on dev machine.  
-*This method adding us ability not recompile all project inside docker, but just to recompile few `NIF`'s.*   -->
+1. For this case we are compiling our images locally inside Docker.  
+2. Next we just send resulting tarball into the Production server.  
+
+*Current demo application running locally.*
 
 ## Docker for Mac:
 
@@ -25,6 +22,8 @@ Currently it is `ERTS 8.0.2` inside Docker, which means you must have `Erlang` 1
        
 ### Add demo host into `/etc/hosts`:
     $ sudo sh -c "echo '127.0.0.1 some_app.lvh.me' >> /etc/hosts"    
+
+Now you can visit [`some_app.lvh.me`](http://some_app.lvh.me) from your browser.
 
 ## Docker Machine:
 
@@ -37,8 +36,6 @@ Currently it is `ERTS 8.0.2` inside Docker, which means you must have `Erlang` 1
     
 ### Add demo host into `/etc/hosts`:
     $ sudo sh -c "echo '$([[ $DOCKER_HOST =~ ^[a-z:\/]*([0-9\.]*):* ]] && echo ${BASH_REMATCH[1]}) some_app.lvh.me' >> /etc/hosts"
-
-Now you can visit [`some_app.lvh.me`](http://some_app.lvh.me) from your browser.
 
 ## Cleanup:
 
