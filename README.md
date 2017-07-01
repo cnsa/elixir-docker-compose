@@ -1,5 +1,5 @@
 # SomeApp
-### [RedixPubSubFastlane](https://github.com/cnsa/redix_pubsub_fastlane) Demo App
+### [Redix.PubSub.Fastlane](https://github.com/cnsa/redix_pubsub_fastlane) Demo App
 
 To start your Phoenix app:
 
