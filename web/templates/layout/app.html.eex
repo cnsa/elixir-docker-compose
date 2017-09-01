@@ -8,6 +8,6 @@
 </head>
 <body>
    <%= render @view_module, @view_template, assigns %>
-   <footer><h4><%= app_version %></h4></footer>
+   <footer><h4><%= app_version() %></h4></footer>
 </body>
 </html>

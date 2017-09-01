@@ -5,7 +5,7 @@ defmodule SomeApp do
   def start(_type, _args) do
     import Supervisor.Spec
 
-    redis = redis_options
+    redis = redis_options()
 
     # Define workers and child supervisors to be supervised
     children = [
