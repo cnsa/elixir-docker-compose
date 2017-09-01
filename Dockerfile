@@ -1,4 +1,4 @@
-FROM cnsa/iconv-latest
+FROM cnsa/iconv:latest
 
 ARG VERSION
 

@@ -1,7 +1,7 @@
 version: '2'
 services:
   lb:
-    image: dockercloud/haproxy:1.5.3
+    image: dockercloud/haproxy:1.6.7
     ports:
       - 80:80
     environment:

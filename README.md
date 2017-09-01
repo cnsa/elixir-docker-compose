@@ -8,8 +8,11 @@ To start your Phoenix app:
 
 ## CrossOS Compilation
 
-1. For this case we are compiling our images locally inside Docker.  
-2. Next we just send resulting tarball into the Production server.  
+1. For this case we are compiling our images locally inside Docker, then:
+
+
+1. Build our custom image.  
+2. Just send resulting tarball into the Production server.  
 
 *Current demo application running locally.*
 

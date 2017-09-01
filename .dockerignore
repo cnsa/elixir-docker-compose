@@ -1,4 +1,7 @@
-_build
+_build/dev
+_build/test
+_build/prod
+!_build/prod/rel
 deps
 .gtm
 .idea
