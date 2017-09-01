@@ -4,15 +4,17 @@
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
-  * Start Phoenix endpoint with `mix phoenix.server`
+  * Start Phoenix endpoint with `mix phx.server`
 
 ## CrossOS Compilation
 
-1. For this case we are compiling our images locally inside Docker, then:
+First:
+1. For this case we are compiling our images locally inside Docker
 
+Then:
 
-1. Build our custom image.  
-2. Just send resulting tarball into the Production server.  
+* Build custom Docker image (+).  
+* Just send resulting tarball into the Production server.  
 
 *Current demo application running locally.*
 
